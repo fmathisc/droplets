@@ -1,6 +1,6 @@
-# droplets
+# Droplets
 
-Droplets
+Droplets project : guess the liquid you are scanning
 
 ## Getting Started
 

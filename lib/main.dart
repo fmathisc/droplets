@@ -85,9 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
               ),
               Padding(padding: EdgeInsets.only(top: 100)),
-              ButtonWithTextWidget("Je suis le téléphone capteur"),
-              ButtonWithTextWidget("Je suis le téléphone support"),
-              ButtonWithTextWidget("Historique"),
+              ButtonWithTextWidget("Je suis le téléphone capteur",340),
+              ButtonWithTextWidget("Je suis le téléphone support",340),
+              ButtonWithTextWidget("Historique",340),
               Padding(padding: EdgeInsets.only(bottom: 80)),
               ButtonCircleWithTextWidget("?"),
 

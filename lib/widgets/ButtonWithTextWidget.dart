@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class ButtonWithTextWidget extends StatelessWidget {
   String text;
-  ButtonWithTextWidget(this.text);
+  double size;
+  ButtonWithTextWidget(this.text, this.size);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -10,7 +11,7 @@ class ButtonWithTextWidget extends StatelessWidget {
 
       child: SizedBox(
         height: 50.0,
-        width: 340,
+        width: size,
         child: Material(
           borderRadius: BorderRadius.circular(8.0),
           elevation: 3.0,

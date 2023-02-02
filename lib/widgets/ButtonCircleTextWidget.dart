@@ -21,10 +21,7 @@ class ButtonCircleWithTextWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: FlatButton(
-        onPressed: () {
-          // Code for button press here
-        },
+      child: Container(
         child: Center(
           child: Text(
             "${text}",

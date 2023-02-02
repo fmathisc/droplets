@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 150.0,
               width: MediaQuery.of(context).size.width,
               child: Image.asset(
-                'assets/images/image1.png',
+                'assets/images/dropletslogo.png',
                 height: 50,
               ),
               decoration: BoxDecoration(

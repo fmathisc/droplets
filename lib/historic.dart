@@ -17,13 +17,13 @@ class MyApp extends StatelessWidget {
       title: 'Droplets',
       theme: null,
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(title: 'Droplets'),
+      home: HistoricPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class HistoricPage extends StatefulWidget {
+  const HistoricPage({Key? key}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -34,13 +34,12 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HistoricPage> createState() => _HistoricPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HistoricPageState extends State<HistoricPage> {
   void _init() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -87,7 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Padding(padding: EdgeInsets.only(top: 100)),
             ContainerHistoricWidget(),
-            ButtonWithTextWidget("Tester deux gouttes",340),
             ButtonWithTextWidget("Retour",120),
             Padding(padding: EdgeInsets.only(bottom: 80)),
             ButtonCircleWithTextWidget("?"),

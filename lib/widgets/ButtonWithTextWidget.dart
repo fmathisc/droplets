@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class ButtonWithTextWidget extends StatelessWidget {
   String text;
   double size;
-  ButtonWithTextWidget(this.text, this.size);
+  String route;
+  ButtonWithTextWidget(this.text, this.size, this.route);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,7 +20,11 @@ class ButtonWithTextWidget extends StatelessWidget {
           color: Color(0xFFFFFFFF),
           child: GestureDetector(
             onTap: () {
-
+              if(route=='') {
+                Navigator.pop(context);
+              }else {
+                Navigator.pushNamed(context, '${route}');
+              }
             },
             child: Center(
               child: Text(

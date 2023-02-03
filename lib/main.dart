@@ -1,3 +1,5 @@
+import 'package:droplets/choice.dart';
+import 'package:droplets/support.dart';
 import 'package:droplets/widgets/ButtonCircleTextWidget.dart';
 import 'package:droplets/widgets/ButtonWithTextWidget.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +14,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Droplets',
       theme: null,
       debugShowCheckedModeBanner: false,
       home: MyHomePage(title: 'Droplets'),
+      initialRoute: '/',
+      routes: {
+        '/choice': (context) => ChoicePage(),
+        '/support': (context) => SupportPage(),
+      },
     );
   }
 }
@@ -85,9 +92,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
               ),
               Padding(padding: EdgeInsets.only(top: 100)),
-              ButtonWithTextWidget("Je suis le téléphone capteur",340),
-              ButtonWithTextWidget("Je suis le téléphone support",340),
-              ButtonWithTextWidget("Historique",340),
+              ButtonWithTextWidget("Je suis le téléphone capteur",340,'/choice'),
+              ButtonWithTextWidget("Je suis le téléphone support",340,'/support'),
+              ButtonWithTextWidget("Historique",340,''),
               Padding(padding: EdgeInsets.only(bottom: 80)),
               ButtonCircleWithTextWidget("?"),
 

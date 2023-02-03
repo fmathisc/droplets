@@ -1,4 +1,5 @@
 import 'package:droplets/choice.dart';
+import 'package:droplets/historic.dart';
 import 'package:droplets/support.dart';
 import 'package:droplets/widgets/ButtonCircleTextWidget.dart';
 import 'package:droplets/widgets/ButtonWithTextWidget.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/choice': (context) => ChoicePage(),
         '/support': (context) => SupportPage(),
+        '/historic': (context) => HistoricPage()
       },
     );
   }
@@ -94,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(padding: EdgeInsets.only(top: 100)),
               ButtonWithTextWidget("Je suis le téléphone capteur",340,'/choice'),
               ButtonWithTextWidget("Je suis le téléphone support",340,'/support'),
-              ButtonWithTextWidget("Historique",340,''),
+              ButtonWithTextWidget("Historique",340,'/historic'),
               Padding(padding: EdgeInsets.only(bottom: 80)),
               ButtonCircleWithTextWidget("?"),
 

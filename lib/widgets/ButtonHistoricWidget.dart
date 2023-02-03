@@ -23,14 +23,9 @@ class ButtonHistoricWidget extends StatelessWidget {
       ),
       child: Container(
         child: Center(
-          child: Text(
-            // Mettre logo
-            "L",
-            style: TextStyle(
-                color: Color(0xFF267DAE),
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Roboto',
-                fontSize: 20),
+          child: Image.asset(
+            'assets/images/${logo}.png',
+            height: 20,
           ),
         ),
       ),

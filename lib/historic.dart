@@ -86,7 +86,7 @@ class _HistoricPageState extends State<HistoricPage> {
             ),
             Padding(padding: EdgeInsets.only(top: 100)),
             ContainerHistoricWidget(),
-            ButtonWithTextWidget("Retour",120),
+            ButtonWithTextWidget("Retour",120,''),
             Padding(padding: EdgeInsets.only(bottom: 80)),
             ButtonCircleWithTextWidget("?"),
 

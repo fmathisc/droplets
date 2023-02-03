@@ -10,7 +10,7 @@ class ContainerHistoricWidget extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 80),
 
       child: SizedBox(
-        height: 50.0,
+        height: 55.0,
         width: 340,
         child: Material(
           borderRadius: BorderRadius.circular(8.0),
@@ -28,9 +28,9 @@ class ContainerHistoricWidget extends StatelessWidget {
                     "12:05"
                 ),
                 Padding(padding: EdgeInsets.only(left: 100)),
-                ButtonHistoricWidget(''),
+                ButtonHistoricWidget('eye'),
                 Padding(padding: EdgeInsets.only(left: 10)),
-                ButtonHistoricWidget('')
+                ButtonHistoricWidget('trash')
               ],
             ),
 

@@ -61,38 +61,38 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
         child: Column(
-            children: <Widget>[
-              Container(
-                height: 150.0,
-                width: MediaQuery.of(context).size.width,
-                child: Image.asset(
-                  'assets/images/dropletslogo.png',
-                 height: 50,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.vertical(
-                  bottom: Radius.elliptical(
-                          MediaQuery.of(context).size.width, 150.0)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: const Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
-                  ),
+          children: <Widget>[
+            Container(
+              height: 150.0,
+              width: MediaQuery.of(context).size.width,
+              child: Image.asset(
+                'assets/images/dropletslogo.png',
+                height: 50,
               ),
-              Padding(padding: EdgeInsets.only(top: 100)),
-              ButtonWithTextWidget("Je suis le téléphone capteur",340),
-              ButtonWithTextWidget("Je suis le téléphone support",340),
-              ButtonWithTextWidget("Historique",340),
-              Padding(padding: EdgeInsets.only(bottom: 80)),
-              ButtonCircleWithTextWidget("?"),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.vertical(
+                    bottom: Radius.elliptical(
+                        MediaQuery.of(context).size.width, 150.0)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+            ),
+            Padding(padding: EdgeInsets.only(top: 100)),
+            ButtonWithTextWidget("Tester une goutte",340),
+            ButtonWithTextWidget("Tester deux gouttes",340),
+            ButtonWithTextWidget("Retour",120),
+            Padding(padding: EdgeInsets.only(bottom: 80)),
+            ButtonCircleWithTextWidget("?"),
 
 
-            ],
+          ],
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:droplets/choice.dart';
 import 'package:droplets/historic.dart';
 import 'package:droplets/support.dart';
@@ -5,14 +6,21 @@ import 'package:droplets/widgets/ButtonCircleTextWidget.dart';
 import 'package:droplets/widgets/ButtonWithTextWidget.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'camera.dart';
+
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final cameras = await availableCameras();
+  final firstCamera = cameras.first;
+  runApp(MyApp(firstCamera: firstCamera));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final CameraDescription firstCamera;
 
-  // This widget is the root of your application.
+  const MyApp({Key? key, required this.firstCamera}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,12 +32,12 @@ class MyApp extends StatelessWidget {
       routes: {
         '/choice': (context) => ChoicePage(),
         '/support': (context) => SupportPage(),
-        '/historic': (context) => HistoricPage()
+        '/historic': (context) => HistoricPage(),
+        '/camera': (context) => TakePictureScreen(camera: firstCamera)
       },
     );
   }
 }
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
@@ -67,7 +75,6 @@ class _MyHomePageState extends State<MyHomePage> {
         width: double.infinity,
         height: double.infinity,
         color: Color(0xFF267DAE),
-
 
         child: Column(
             children: <Widget>[

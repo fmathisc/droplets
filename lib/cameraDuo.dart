@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
-class TakePictureScreen extends StatefulWidget {
-  const TakePictureScreen({
+class TakePictureScreen2 extends StatefulWidget {
+  const TakePictureScreen2({
     Key? key,
     required this.camera,
   }) : super(key: key);
@@ -13,10 +13,10 @@ class TakePictureScreen extends StatefulWidget {
   final CameraDescription camera;
 
   @override
-  _TakePictureScreenState createState() => _TakePictureScreenState();
+  _TakePictureScreenState2 createState() => _TakePictureScreenState2();
 }
 
-class _TakePictureScreenState extends State<TakePictureScreen> {
+class _TakePictureScreenState2 extends State<TakePictureScreen2> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
 
@@ -35,7 +35,6 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
     _controller.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +47,18 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
               children: [
                 CameraPreview(_controller),
                 Positioned(
-                  left: MediaQuery.of(context).size.width / 2 - 75,
+                  left: MediaQuery.of(context).size.width / 2 - 150,
+                  top: MediaQuery.of(context).size.height / 2 - 100,
+                  child: Container(
+                    width: 150,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.yellow, width: 4),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: MediaQuery.of(context).size.width / 2 ,
                   top: MediaQuery.of(context).size.height / 2 - 100,
                   child: Container(
                     width: 150,
@@ -89,28 +99,6 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
   }
 }
 
-class _SquarePainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final squareSize = 200.0;
-    final squarePaint = Paint()
-      ..color = Colors.yellow
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 4.0;
-
-    final centerX = size.width / 2;
-    final centerY = size.height / 2;
-    final squareRect = Rect.fromCenter(
-      center: Offset(centerX, centerY),
-      width: squareSize,
-      height: squareSize,
-    );
-    canvas.drawRect(squareRect, squarePaint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
 
 class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
@@ -133,7 +121,7 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       theme:null,
-      home: TakePictureScreen(camera: firstCamera),
+      home: TakePictureScreen2(camera: firstCamera),
     ),
   );
 }

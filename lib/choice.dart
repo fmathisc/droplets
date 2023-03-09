@@ -81,7 +81,7 @@ class _ChoicePageState extends State<ChoicePage> {
             ),
             Padding(padding: EdgeInsets.only(top: 100)),
             ButtonWithTextWidget("Tester une goutte",340,'/camera'),
-            ButtonWithTextWidget("Tester deux gouttes",340,'/camera'),
+            ButtonWithTextWidget("Tester deux gouttes",340,'/cameraDuo'),
             ButtonWithTextWidget("Retour",120,''),
             Padding(padding: EdgeInsets.only(bottom: 80)),
             ButtonCircleWithTextWidget("?"),

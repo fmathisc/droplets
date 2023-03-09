@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:droplets/cameraDuo.dart';
 import 'package:droplets/choice.dart';
 import 'package:droplets/historic.dart';
 import 'package:droplets/support.dart';
@@ -33,7 +34,9 @@ class MyApp extends StatelessWidget {
         '/choice': (context) => ChoicePage(),
         '/support': (context) => SupportPage(),
         '/historic': (context) => HistoricPage(),
-        '/camera': (context) => TakePictureScreen(camera: firstCamera)
+        '/camera': (context) => TakePictureScreen(camera: firstCamera),
+        '/cameraDuo': (context) => TakePictureScreen2(camera: firstCamera),
+
       },
     );
   }

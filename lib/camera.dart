@@ -1,14 +1,13 @@
 import 'dart:async';
 import 'dart:io';
-
+import 'package:gallery_saver/gallery_saver.dart';
+import 'package:path/path.dart' show join;
+import 'package:path_provider/path_provider.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 class TakePictureScreen extends StatefulWidget {
-  const TakePictureScreen({
-    Key? key,
-    required this.camera,
-  }) : super(key: key);
+  const TakePictureScreen({Key? key, required this.camera}) : super(key: key);
 
   final CameraDescription camera;
 
@@ -68,7 +67,24 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
                       children: [
                         FloatingActionButton(
                           onPressed: () async {
-                            // ...
+                            try {
+                              await _initializeControllerFuture;
+                              final image = await _controller.takePicture();
+                              final appDir = await getExternalStorageDirectory(); // utiliser getExternalStorageDirectory() au lieu de getApplicationDocumentsDirectory()
+                              final fileName = DateTime.now().toIso8601String();
+                              final filePath = join(appDir!.path, '$fileName.png');
+                              await image.saveTo(filePath);
+                              if (!mounted) return;
+                              // Ajouter cette ligne pour enregistrer l'image dans la galerie
+                              final result = await GallerySaver.saveImage(filePath);
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => DisplayPictureScreen(imagePath: filePath),
+                                ),
+                              );
+                            } catch (e) {
+                              print(e);
+                            }
                           },
                           child: const Icon(Icons.camera_alt),
                           backgroundColor: Colors.white,
@@ -87,29 +103,6 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
       ),
     );
   }
-}
-
-class _SquarePainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final squareSize = 200.0;
-    final squarePaint = Paint()
-      ..color = Colors.yellow
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 4.0;
-
-    final centerX = size.width / 2;
-    final centerY = size.height / 2;
-    final squareRect = Rect.fromCenter(
-      center: Offset(centerX, centerY),
-      width: squareSize,
-      height: squareSize,
-    );
-    canvas.drawRect(squareRect, squarePaint);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
 class DisplayPictureScreen extends StatelessWidget {
@@ -132,7 +125,7 @@ Future<void> main() async {
   final firstCamera = cameras.first;
   runApp(
     MaterialApp(
-      theme:null,
+      theme: ThemeData.dark(),
       home: TakePictureScreen(camera: firstCamera),
     ),
   );

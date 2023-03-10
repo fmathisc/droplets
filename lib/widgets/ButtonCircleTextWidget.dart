@@ -43,7 +43,7 @@ class ButtonCircleWithTextWidget extends StatelessWidget {
             child: Text(
               "${text}",
               style: TextStyle(
-                  color: Color(0xFF267DAE),
+                  color: Color(0xB6267DAE),
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Roboto',
                   fontSize: 20),

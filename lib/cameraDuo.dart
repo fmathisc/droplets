@@ -3,6 +3,9 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery_saver/gallery_saver.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 class TakePictureScreen2 extends StatefulWidget {
   const TakePictureScreen2({
@@ -78,7 +81,24 @@ class _TakePictureScreenState2 extends State<TakePictureScreen2> {
                       children: [
                         FloatingActionButton(
                           onPressed: () async {
-                            // ...
+                            try {
+                              await _initializeControllerFuture;
+                              final image = await _controller.takePicture();
+                              final appDir = await getExternalStorageDirectory(); // utiliser getExternalStorageDirectory() au lieu de getApplicationDocumentsDirectory()
+                              final fileName = DateTime.now().toIso8601String();
+                              final filePath = join(appDir!.path, '$fileName.png');
+                              await image.saveTo(filePath);
+                              if (!mounted) return;
+                              // Ajouter cette ligne pour enregistrer l'image dans la galerie
+                              final result = await GallerySaver.saveImage(filePath);
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => DisplayPictureScreen(imagePath: filePath),
+                                ),
+                              );
+                            } catch (e) {
+                              print(e);
+                            }
                           },
                           child: const Icon(Icons.camera_alt),
                           backgroundColor: Colors.white,

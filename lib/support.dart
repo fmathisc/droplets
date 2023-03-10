@@ -52,7 +52,7 @@ class _SupportPageState extends State<SupportPage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xFF267DAE),
+        color: Color(0xFF1F668D),
 
 
         child: Column(
@@ -171,8 +171,11 @@ class _SupportPageState extends State<SupportPage> {
                 ),
               ],
             ),
-            Padding(padding: EdgeInsets.only(bottom: 49)),
-            ButtonWithTextWidget("Retour",120,'')
+            Padding(padding: EdgeInsets.only(bottom: 7)),
+            Align(
+              alignment: Alignment.center,
+              child: ButtonWithTextWidget("Retour", 120, ''),
+            ),
 
 
           ],

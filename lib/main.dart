@@ -6,19 +6,25 @@ import 'package:droplets/support.dart';
 import 'package:droplets/widgets/ButtonCircleTextWidget.dart';
 import 'package:droplets/widgets/ButtonWithTextWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'camera.dart';
 
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   final cameras = await availableCameras();
   final firstCamera = cameras.first;
   runApp(MyApp(firstCamera: firstCamera));
+  FlutterNativeSplash.remove();
 }
+
+
 
 class MyApp extends StatelessWidget {
   final CameraDescription firstCamera;
+
 
   const MyApp({Key? key, required this.firstCamera}) : super(key: key);
 

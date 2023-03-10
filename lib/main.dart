@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xFF267DAE),
+        color: Color(0xFF1F668D),
 
         child: Column(
             children: <Widget>[

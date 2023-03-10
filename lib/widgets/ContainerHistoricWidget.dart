@@ -27,7 +27,9 @@ class ContainerHistoricWidget extends StatelessWidget {
                     "12/04/2001",
                     "12:05"
                 ),
-                Padding(padding: EdgeInsets.only(left: 100)),
+                Padding(padding: EdgeInsets.only(left: 50)),
+                ButtonHistoricWidget('stat2'),
+                Padding(padding: EdgeInsets.only(left: 10)),
                 ButtonHistoricWidget('eye'),
                 Padding(padding: EdgeInsets.only(left: 10)),
                 ButtonHistoricWidget('trash')

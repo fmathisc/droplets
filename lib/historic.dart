@@ -57,7 +57,7 @@ class _HistoricPageState extends State<HistoricPage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xFF267DAE),
+        color: Color(0xFF1F668D),
 
 
         child: Column(
@@ -86,9 +86,15 @@ class _HistoricPageState extends State<HistoricPage> {
             ),
             Padding(padding: EdgeInsets.only(top: 100)),
             ContainerHistoricWidget(),
-            ButtonWithTextWidget("Retour",120,''),
-            Padding(padding: EdgeInsets.only(bottom: 80)),
-            ButtonCircleWithTextWidget("?"),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ButtonWithTextWidget("Retour", 120, ''),
+            ),
+            Padding(padding: EdgeInsets.only(bottom: 50)),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ButtonCircleWithTextWidget("?"),
+            ),
 
 
           ],

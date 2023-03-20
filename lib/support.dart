@@ -52,7 +52,7 @@ class _SupportPageState extends State<SupportPage> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xFF267DAE),
+        color: Color(0xFF1F668D),
 
         child: Column(
           children: <Widget>[
@@ -78,112 +78,94 @@ class _SupportPageState extends State<SupportPage> {
                 ],
               ),
             ),
-            Padding(padding: EdgeInsets.only(top: 50)),
+            Padding(padding: EdgeInsets.only(top: 15)),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: 75.0,
-                      height: 75.0,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(top: 30)),
-                    Container(
-                      width: 75.0,
-                      height: 75.0,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(padding: EdgeInsets.only(right: 40)),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: 50.0,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(top: 30)),
-                    Container(
-                      width: 50.0,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white
-                      ),
-                    ),
-                  ],
-                ),
+                _buildCircleContainer(40),
+                _buildCircleContainer(40),
+                _buildCircleContainer(40),
               ],
             ),
-            Padding(padding: EdgeInsets.only(top: 30)),
+            Padding(padding: EdgeInsets.only(top: 8)),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: 120.0,
-                      height: 120.0,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(top: 30)),
-                    Container(
-                      width: 120.0,
-                      height: 120.0,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(padding: EdgeInsets.only(right: 20)),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(top: 30)),
-                    Container(
-                      width: 100.0,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white
-                      ),
-                    ),
-                  ],
-                ),
+                _buildCircleContainer(40),
+                _buildCircleContainer(40),
+                _buildCircleContainer(40),
               ],
             ),
-            Padding(padding: EdgeInsets.only(top: 30)),
+            Padding(padding: EdgeInsets.only(top: 20)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _buildCircleContainer(50),
+                _buildCircleContainer(50),
+                _buildCircleContainer(50),
+              ],
+            ),
+            Padding(padding: EdgeInsets.only(top: 8)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _buildCircleContainer(50),
+                _buildCircleContainer(50),
+                _buildCircleContainer(50),
+              ],
+            ),
+            Padding(padding: EdgeInsets.only(top: 20)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _buildCircleContainer(60),
+                _buildCircleContainer(60),
+                _buildCircleContainer(60),
+              ],
+            ),
+            Padding(padding: EdgeInsets.only(top: 8)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _buildCircleContainer(60),
+                _buildCircleContainer(60),
+                _buildCircleContainer(60),
+              ],
+            ),
+            Padding(padding: EdgeInsets.only(top: 20)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _buildCircleContainer(70),
+                _buildCircleContainer(70),
+                _buildCircleContainer(70),
+              ],
+            ),
+            Padding(padding: EdgeInsets.only(top: 8)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                _buildCircleContainer(70),
+                _buildCircleContainer(70),
+                _buildCircleContainer(70),
+              ],
+            ),
+           Padding(padding: EdgeInsets.only(top: 17)),
             ButtonWithTextWidget("Retour", 120, ''),
           ],
         ),
+      ),
+    );
+  }
+
+
+  Widget _buildCircleContainer(var tailleCircle) {
+    return Container(
+      width: tailleCircle,
+      height: tailleCircle,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.white,
       ),
     );
   }

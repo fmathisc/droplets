@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ButtonWithTextWidget("Je suis le téléphone support",340,'/support'),
               ButtonWithTextWidget("Historique",340,'/historic'),
               Padding(padding: EdgeInsets.only(bottom: 80)),
-              ButtonCircleWithTextWidget("?"),
+              ButtonCircleWithTextWidget("?", "Bievenue sur Droplets ! Ici vous pouvez décider si le téléphone jouera le role de support ou de capteur. Vous pouvez aussi afficher l'historique des anciennes captures."),
 
 
             ],

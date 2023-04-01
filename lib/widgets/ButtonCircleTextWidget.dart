@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class ButtonCircleWithTextWidget extends StatelessWidget {
   String text;
-  ButtonCircleWithTextWidget(this.text);
+  String text2;
+  ButtonCircleWithTextWidget(this.text, this.text2);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class ButtonCircleWithTextWidget extends StatelessWidget {
           context: context,
           builder: (BuildContext context) => AlertDialog(
             title: const Text('Aide'),
-            content: const Text('Ceci affiche les instructions et explications d\'utiisation de la page'),
+            content: Text("${text2}"),
             actions: <Widget>[
               TextButton(
                 onPressed: () => Navigator.pop(context, 'OK'),

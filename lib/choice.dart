@@ -84,7 +84,7 @@ class _ChoicePageState extends State<ChoicePage> {
             ButtonWithTextWidget("Tester deux gouttes",340,'/cameraDuo'),
             ButtonWithTextWidget("Retour",120,''),
             Padding(padding: EdgeInsets.only(bottom: 80)),
-            ButtonCircleWithTextWidget("?"),
+            ButtonCircleWithTextWidget("?", "Ici, vous pouvez choisir de capturer une goutte ou deux gouttes simultanément."),
 
 
           ],

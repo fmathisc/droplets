@@ -39,6 +39,7 @@ dependencies:
   gallery_saver: ^2.3.2
   flutter_native_splash: ^2.1.6
   ffi: ^1.2.1
+  dartpy: ^0.0.1+4
 
 dev_dependencies:
   flutter_test:

@@ -93,7 +93,7 @@ class _HistoricPageState extends State<HistoricPage> {
             Padding(padding: EdgeInsets.only(bottom: 50)),
             Align(
               alignment: Alignment.bottomCenter,
-              child: ButtonCircleWithTextWidget("?"),
+              child: ButtonCircleWithTextWidget("?","Ici, vous pouvez consulter toutes vos anciennes captures. Vous avez la possibilité d'afficher les stats d'une capture, afficher l'image capturée ou de supprimer une capture."),
             ),
 
 

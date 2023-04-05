@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:gallery_saver/gallery_saver.dart';
+import 'package:path/path.dart' show join;
+import 'package:path_provider/path_provider.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:gallery_saver/gallery_saver.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:image/image.dart' as img;
 
 class TakePictureScreen2 extends StatefulWidget {
   const TakePictureScreen2({
@@ -84,12 +85,21 @@ class _TakePictureScreenState2 extends State<TakePictureScreen2> {
                             try {
                               await _initializeControllerFuture;
                               final image = await _controller.takePicture();
-                              final appDir = await getExternalStorageDirectory(); // utiliser getExternalStorageDirectory() au lieu de getApplicationDocumentsDirectory()
+                              final appDir = await getExternalStorageDirectory();
                               final fileName = DateTime.now().toIso8601String();
                               final filePath = join(appDir!.path, '$fileName.png');
-                              await image.saveTo(filePath);
+
+                              // Ajouter le recadrage de l'image avant de l'enregistrer
+                              final img.Image? imgFile = img.decodeImage(await image.readAsBytes());
+                              final int width = imgFile!.width;
+                              final int height = imgFile.height;
+                              final int size = width < height ? width : height;
+                              final img.Image croppedImage = img.copyCrop(imgFile, x:(width-size)~/2, y:(height-size)~/2, width:size, height:size);
+
+                              await File(filePath).writeAsBytes(img.encodePng(croppedImage));
+
                               if (!mounted) return;
-                              // Ajouter cette ligne pour enregistrer l'image dans la galerie
+
                               final result = await GallerySaver.saveImage(filePath);
                               await Navigator.of(context).push(
                                 MaterialPageRoute(

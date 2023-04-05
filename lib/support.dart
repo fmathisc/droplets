@@ -150,7 +150,7 @@ class _SupportPageState extends State<SupportPage> {
                 _buildCircleContainer(70),
               ],
             ),
-           Padding(padding: EdgeInsets.only(top: 17)),
+            Padding(padding: EdgeInsets.only(top: 17)),
             ButtonWithTextWidget("Retour", 120, ''),
           ],
         ),
@@ -159,7 +159,7 @@ class _SupportPageState extends State<SupportPage> {
   }
 
 
-  Widget _buildCircleContainer(var tailleCircle) {
+  Widget _buildCircleContainer(double tailleCircle) {
     return Container(
       width: tailleCircle,
       height: tailleCircle,

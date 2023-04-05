@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:droplets/widgets/ButtonSaveCapture.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
@@ -89,10 +90,33 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
 
                               final result = await GallerySaver.saveImage(filePath);
                               await Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => DisplayPictureScreen(imagePath: filePath),
-                                ),
-                              );
+                                  MaterialPageRoute(
+                                    builder: (context) => Scaffold(
+                                      appBar: null,
+                                      body: Container(
+                                        color: Color(0xFF1F668D),
+                                        child: Column(
+                                          children: [
+                                            Expanded(
+                                              child: Image.file(File(filePath)),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.all(16.0),
+                                              child: TextField(
+                                                style: TextStyle(color: Colors.white),
+                                                decoration: InputDecoration(
+                                                  labelText: 'Nom de la capture',
+                                                  labelStyle: TextStyle(color: Colors.white),
+                                                ),
+                                              ),
+                                            ),
+                                            ButtonSaveCapture("Enregistrer",150,'/historic'),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  );
                             } catch (e) {
                               print(e);
                             }

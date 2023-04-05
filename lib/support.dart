@@ -78,7 +78,7 @@ class _SupportPageState extends State<SupportPage> {
                 ],
               ),
             ),
-            Padding(padding: EdgeInsets.only(top: 15)),
+            Padding(padding: EdgeInsets.only(top: 10)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -96,7 +96,7 @@ class _SupportPageState extends State<SupportPage> {
                 _buildCircleContainer(40),
               ],
             ),
-            Padding(padding: EdgeInsets.only(top: 20)),
+            Padding(padding: EdgeInsets.only(top: 10)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -114,7 +114,7 @@ class _SupportPageState extends State<SupportPage> {
                 _buildCircleContainer(50),
               ],
             ),
-            Padding(padding: EdgeInsets.only(top: 20)),
+            Padding(padding: EdgeInsets.only(top: 10)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -132,7 +132,7 @@ class _SupportPageState extends State<SupportPage> {
                 _buildCircleContainer(60),
               ],
             ),
-            Padding(padding: EdgeInsets.only(top: 20)),
+            Padding(padding: EdgeInsets.only(top: 10)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -150,7 +150,7 @@ class _SupportPageState extends State<SupportPage> {
                 _buildCircleContainer(70),
               ],
             ),
-            Padding(padding: EdgeInsets.only(top: 17)),
+            Padding(padding: EdgeInsets.only(top: 10)),
             ButtonWithTextWidget("Retour", 120, ''),
           ],
         ),

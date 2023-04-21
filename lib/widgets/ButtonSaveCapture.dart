@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:droplets/historic.dart';
+
+import 'ButtonHistoricWidget.dart';
+import 'ContainerHistoricWidget.dart';
 
 class ButtonSaveCapture extends StatelessWidget {
   String text;
   double size;
   String route;
-  ButtonSaveCapture(this.text, this.size, this.route);
+  String name;
+  String file;
+  ButtonSaveCapture(this.text, this.size, this.route, this.name, this.file);
   @override
   Widget build(BuildContext context) {
+
     return Container(
       padding: EdgeInsets.only(bottom: 80),
-
       child: SizedBox(
         height: 50.0,
         width: size,
@@ -22,8 +28,20 @@ class ButtonSaveCapture extends StatelessWidget {
             onTap: () {
               if(route=='') {
                 Navigator.pop(context);
-              }else {
+              } else {
                 Navigator.pushNamed(context, '${route}');
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Ajouté avec succès'),
+                    duration: Duration(seconds: 1),
+                    action: SnackBarAction(
+                      label: 'Annuler',
+                      onPressed: () {
+                      },
+                    ),
+                  ),
+                );
+                HistoricPage.containerHistoricWidgets.add(ContainerHistoricWidget(text: name, file: file));
               }
             },
             child: Center(
@@ -32,14 +50,13 @@ class ButtonSaveCapture extends StatelessWidget {
                 style: TextStyle(
                     color: Color(0xFF267DAE),
                     fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto',
+                    fontFamily: 'Roboto',
                     fontSize: 25),
               ),
             ),
           ),
         ),
       ),
-    )
-    ;
+    );
   }
 }

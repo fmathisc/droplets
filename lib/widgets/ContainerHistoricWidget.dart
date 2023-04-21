@@ -1,14 +1,20 @@
+import 'package:droplets/widgets/ButtonEye.dart';
 import 'package:droplets/widgets/ButtonHistoricWidget.dart';
 import 'package:droplets/widgets/TextHistoricWidget.dart';
 import 'package:flutter/material.dart';
 
 class ContainerHistoricWidget extends StatelessWidget {
-  ContainerHistoricWidget();
+
+  ContainerHistoricWidget({required this.text, required this.file});
+
+  String text;
+  String file;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(bottom: 80),
 
+    return Container(
+      padding: EdgeInsets.only(bottom: 20),
       child: SizedBox(
         height: 55.0,
         width: 340,
@@ -16,32 +22,24 @@ class ContainerHistoricWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0),
           color: Color(0xFFFFFFFF),
           child: GestureDetector(
-            onTap: () {
-
-            },
+            onTap: () {},
             child: Row(
-              children: <Widget> [
+              children: <Widget>[
                 Padding(padding: EdgeInsets.only(left: 10)),
                 TextHistoricWidget(
-                    "Eau",
-                    "12/04/2001",
-                    "12:05"
+                  name: text,
                 ),
                 Padding(padding: EdgeInsets.only(left: 50)),
                 ButtonHistoricWidget('stat2'),
                 Padding(padding: EdgeInsets.only(left: 10)),
-                ButtonHistoricWidget('eye'),
+                ButtonEyeWidget('eye', file),
                 Padding(padding: EdgeInsets.only(left: 10)),
                 ButtonHistoricWidget('trash')
               ],
             ),
-
           ),
         ),
       ),
-    )
-    ;
+    );
   }
 }
-
-

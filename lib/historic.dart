@@ -1,52 +1,26 @@
+import 'package:flutter/material.dart';
 import 'package:droplets/widgets/ButtonCircleTextWidget.dart';
 import 'package:droplets/widgets/ButtonWithTextWidget.dart';
 import 'package:droplets/widgets/ContainerHistoricWidget.dart';
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Droplets',
-      theme: null,
-      debugShowCheckedModeBanner: false,
-      home: HistoricPage(),
-    );
-  }
-}
 
 class HistoricPage extends StatefulWidget {
+  static List<ContainerHistoricWidget> containerHistoricWidgets = [];
   const HistoricPage({Key? key}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
 
   @override
   State<HistoricPage> createState() => _HistoricPageState();
 }
 
 class _HistoricPageState extends State<HistoricPage> {
-  void _init() {
+  void addWidget(String text, String file) {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
+      HistoricPage.containerHistoricWidgets.add(ContainerHistoricWidget(text: text, file: file));
+    });
+  }
+
+  void removeWidget(int index) {
+    setState(() {
+      HistoricPage.containerHistoricWidgets.removeAt(index);
     });
   }
 
@@ -58,8 +32,6 @@ class _HistoricPageState extends State<HistoricPage> {
         width: double.infinity,
         height: double.infinity,
         color: Color(0xFF1F668D),
-
-
         child: Column(
           children: <Widget>[
             Container(
@@ -84,8 +56,16 @@ class _HistoricPageState extends State<HistoricPage> {
                 ],
               ),
             ),
-            Padding(padding: EdgeInsets.only(top: 100)),
-            ContainerHistoricWidget(),
+            Padding(padding: EdgeInsets.only(top: 0)),
+            Expanded(
+              child: ListView.builder(
+                itemCount: HistoricPage.containerHistoricWidgets.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return HistoricPage.containerHistoricWidgets[index];
+                },
+              ),
+            ),
+            SizedBox(height: 20),
             Align(
               alignment: Alignment.bottomCenter,
               child: ButtonWithTextWidget("Retour", 120, ''),
@@ -93,10 +73,11 @@ class _HistoricPageState extends State<HistoricPage> {
             Padding(padding: EdgeInsets.only(bottom: 50)),
             Align(
               alignment: Alignment.bottomCenter,
-              child: ButtonCircleWithTextWidget("?","Ici, vous pouvez consulter toutes vos anciennes captures. Vous avez la possibilité d'afficher les stats d'une capture, afficher l'image capturée ou de supprimer une capture."),
+              child: ButtonCircleWithTextWidget(
+                "?",
+                "Ici, vous pouvez consulter toutes vos anciennes captures. Vous avez la possibilité d'afficher les stats d'une capture, afficher l'image capturée ou de supprimer une capture.",
+              ),
             ),
-
-
           ],
         ),
       ),

@@ -8,6 +8,8 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 
+import 'imageSegmentation/imageSegmentation.dart';
+
 class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({Key? key, required this.camera}) : super(key: key);
 
@@ -20,6 +22,8 @@ class TakePictureScreen extends StatefulWidget {
 class _TakePictureScreenState extends State<TakePictureScreen> {
   late CameraController _controller;
   late Future<void> _initializeControllerFuture;
+  final _textFieldController = TextEditingController();
+
 
   @override
   void initState() {
@@ -75,48 +79,81 @@ class _TakePictureScreenState extends State<TakePictureScreen> {
                               final image = await _controller.takePicture();
                               final appDir = await getExternalStorageDirectory();
                               final fileName = DateTime.now().toIso8601String();
+                              final fileName2 = DateTime.now().toIso8601String()+"Seg";
                               final filePath = join(appDir!.path, '$fileName.png');
+                              final filePath2 = join(appDir.path, '$fileName2.png');
+
 
                               // Ajouter le recadrage de l'image avant de l'enregistrer
                               final img.Image? imgFile = img.decodeImage(await image.readAsBytes());
                               final int width = imgFile!.width;
                               final int height = imgFile.height;
                               final int size = width < height ? width : height;
-                              final img.Image croppedImage = img.copyCrop(imgFile, x:(width-size)~/2, y:(height-size)~/2, width:size, height:size);
+                              final img.Image croppedImage = img.copyCrop(imgFile, (width-size)~/2, (height-size)~/2, size, size);
 
                               await File(filePath).writeAsBytes(img.encodePng(croppedImage));
 
+                              await GallerySaver.saveImage(filePath);
+
+                              imageSegmentation iseg = new imageSegmentation();
+                              await File(filePath2).writeAsBytes(img.encodePng(iseg.lancement(filePath)));
+
+
                               if (!mounted) return;
 
-                              final result = await GallerySaver.saveImage(filePath);
+                              await GallerySaver.saveImage(filePath2);
+
+
                               await Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => Scaffold(
-                                      appBar: null,
-                                      body: Container(
-                                        color: Color(0xFF1F668D),
-                                        child: Column(
-                                          children: [
-                                            Expanded(
-                                              child: Image.file(File(filePath)),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.all(16.0),
-                                              child: TextField(
-                                                style: TextStyle(color: Colors.white),
-                                                decoration: InputDecoration(
-                                                  labelText: 'Nom de la capture',
-                                                  labelStyle: TextStyle(color: Colors.white),
-                                                ),
+                                MaterialPageRoute(
+                                  builder: (context) => Scaffold(
+                                    appBar: null,
+                                    body: Container(
+                                      color: Color(0xFF1F668D),
+                                      child: Column(
+                                        children: [
+                                          Expanded(
+                                            child: Image.file(File(filePath)),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.all(16.0),
+                                            child: TextField(
+                                              style: TextStyle(color: Colors.white),
+                                              decoration: InputDecoration(
+                                                labelText: 'Nom de la capture',
+                                                labelStyle: TextStyle(color: Colors.white),
                                               ),
+                                              controller: _textFieldController,
+                                              onChanged: (value) {
+                                                _textFieldController.text = value;
+                                              },
                                             ),
-                                            ButtonSaveCapture("Enregistrer",150,'/historic'),
-                                          ],
-                                        ),
+                                          ),
+                                          ButtonSaveCapture("Enregistrer",150,'/historic', _textFieldController.text, filePath),
+                                          RaisedButton(
+                                            color: Colors.white,
+                                            textColor: Color(0xFF1F668D),
+                                            child: Text('Voir image segmentée'),
+                                            onPressed: () {
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) => Scaffold(
+                                                    appBar: null,
+                                                    body: Center(
+                                                      child: Image.file(File(filePath2)),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
-                                  );
+                                ),
+                              );
+
                             } catch (e) {
                               print(e);
                             }
